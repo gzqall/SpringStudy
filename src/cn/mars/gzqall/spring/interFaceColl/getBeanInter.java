@@ -1,5 +1,5 @@
 package cn.mars.gzqall.spring.interFaceColl;
 
-public interface getBeanInter {
+public interface GetBeanInter {
 	public void printBeanInfo();
 }

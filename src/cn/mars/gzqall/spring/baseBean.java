@@ -1,6 +1,6 @@
 package cn.mars.gzqall.spring;
 
-public class baseBean {
+public class BaseBean {
 	private String valueName;
 	
 	public void setValueName( String ss ) {

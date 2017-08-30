@@ -3,12 +3,18 @@ package cn.mars.gzqall.spring;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class testBean {
+public class TestBean {
 
 	public static void main(String[] args) {
-		ApplicationContext ac = new ClassPathXmlApplicationContext( "applicationContext.xml");
+		//ÔÚapplicationContextÖÐµÄ bean
+//		ApplicationContext ac = new ClassPathXmlApplicationContext( "applicationContext.xml");
+//		
+//		BaseBean bb = (BaseBean) ac.getBean( "baseBean" );
+//		bb.printValue();
+
+		ApplicationContext ac = new ClassPathXmlApplicationContext( new String[] {"gzqSpringContext.xml"});
 		
-		baseBean bb = (baseBean) ac.getBean( "baseBean" );
-		bb.printValue();
+		BeanImplTest bit = (BeanImplTest) ac.getBean( "getBeanImpl" );
+		bit.execBeanInger();
 	}
 }

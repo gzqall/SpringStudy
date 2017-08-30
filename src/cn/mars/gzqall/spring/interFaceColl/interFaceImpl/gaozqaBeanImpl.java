@@ -1,8 +1,8 @@
 package cn.mars.gzqall.spring.interFaceColl.interFaceImpl;
 
-import cn.mars.gzqall.spring.interFaceColl.getBeanInter;
+import cn.mars.gzqall.spring.interFaceColl.GetBeanInter;
 
-public class gaozqaBeanImpl implements getBeanInter{
+public class GaozqaBeanImpl implements GetBeanInter{
 
 	@Override
 	public void printBeanInfo() {
