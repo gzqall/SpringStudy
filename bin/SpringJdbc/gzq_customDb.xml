@@ -5,11 +5,9 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
-<!-- 基础的bean 有个属性 valueName 有set方法 在context的bean配置中 输入 property 的值 在调用时 就可以直接显示 -->
-	<bean id="baseBean" class="cn.mars.gzqall.spring.BaseBean">
-		<property name="valueName" value="xxxxx"/>
+<!-- 指定custom操作实现类 并且 指定属性 dataSource 所关联的 bean  gzqSpringDB-->
+	<bean id="customeDb" class="cn.mars.gzqall.spring.dataSource.impl.CustomDbImpl">
+		<property name="dataSource" ref="gzqSpringDB"/>
 	</bean>
 	
-	<import resource="SpringJdbc/gzq_customDb.xml"/>
-	<import resource="SpringJdbc/gzq_dataSource.xml"/>
 </beans>

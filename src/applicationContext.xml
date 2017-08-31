@@ -9,4 +9,7 @@
 	<bean id="baseBean" class="cn.mars.gzqall.spring.BaseBean">
 		<property name="valueName" value="xxxxx"/>
 	</bean>
+	
+	<import resource="SpringJdbc/gzq_customDb.xml"/>
+	<import resource="SpringJdbc/gzq_dataSource.xml"/>
 </beans>
