@@ -10,4 +10,7 @@
 		<property name="dataSource" ref="gzqSpringDB"/>
 	</bean>
 	
+	<bean id="customJdbcTempDb" class="cn.mars.gzqall.spring.dataSource.impl.CustomJdbcTempImpl">
+		<property name="dataSource" ref="gzqSpringDB"/>
+	</bean>	
 </beans>
