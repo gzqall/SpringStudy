@@ -97,7 +97,7 @@ public class CustomDbImpl implements CustomDbInter {
 
 	@Override
 	public List<CustomBean> findCustomList( String custName, int age) {
-		String querySql = new String( "SELECT CUSTID, NAME, AGE, ADDR FROM CUSTOM WHERE NAME = ? and age = ?" );
+		String querySql = new String( "SELECT CUSTID, NAME, AGE, ADDR FROM CUSTOM WHERE NAME = ? AND AGE = ?" );
 		
 		List<CustomBean> customList = new ArrayList<CustomBean>();
 		ResultSet rs = null;
