@@ -1,5 +1,6 @@
 package cn.mars.gzqall.spring.dataSource.impl;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -78,5 +80,37 @@ public class CustomJdbcTempImpl implements CustomDbInter {
 		//customList = jdbcTemplate.query(querySql, new Object[]{ "高志强", 18 }, new BeanPropertyRowMapper<CustomBean>(CustomBean.class));
 
 		return customList;
+	}
+
+	@Override
+	public int insertCustomByList(List<CustomBean> customBeanList) {
+		String insertSql = new String( "INSERT INTO CUSTOM( CUSTID, NAME, AGE, ADDR ) VALUES ( ?, ?, ?, ? )" );
+		initTemp();
+		//使用 jdbcTmepleate 直接使用 update方法 将SQL 以及 SQL中的参数，以object数据形式，按顺序赋值
+
+		int[] ii = jdbcTemplate.batchUpdate( insertSql, new customBeanBatchInsertStatement( customBeanList ) );
+		return ii[0];
+	}
+	
+	//新建内部类，实现BatchPreparestatmentSetter接口，映射单笔的custom以及返回custom的大小
+	class customBeanBatchInsertStatement implements BatchPreparedStatementSetter {
+		private List<CustomBean> customs;
+		public customBeanBatchInsertStatement( List<CustomBean> customBeanList  ) {
+			customs = customBeanList;
+		}
+		@Override
+		public int getBatchSize() {
+			return customs.size();
+		}
+
+		@Override
+		public void setValues(PreparedStatement ps, int ii ) throws SQLException {
+			CustomBean cb = customs.get( ii );
+			ps.setInt(1, cb.getCustId() );
+			ps.setString(2, cb.getName() );
+			ps.setInt(3, cb.getAge() );
+			ps.setString(4, cb.getAddr() );
+		}
+		
 	}
 }

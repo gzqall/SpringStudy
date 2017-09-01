@@ -129,4 +129,9 @@ public class CustomDbImpl implements CustomDbInter {
 		}
 		return customList;
 	}
+
+	@Override
+	public int insertCustomByList(List<CustomBean> customBeanList) {
+		return 0;
+	}
 }

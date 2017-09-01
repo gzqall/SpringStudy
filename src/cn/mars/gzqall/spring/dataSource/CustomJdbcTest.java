@@ -1,5 +1,6 @@
 package cn.mars.gzqall.spring.dataSource;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,6 +28,13 @@ public class CustomJdbcTest {
 		Iterator<CustomBean> it = ll.iterator();
 		while( it.hasNext() )
 			System.out.println( it.next().toString() );
+		
+//		List<CustomBean> customList = new ArrayList<CustomBean>();
+//		for( int ii = 5; ii < 11; ii++ ) {
+//			CustomBean cb = new CustomBean( "高志强", "北京市昌平区", ii, 18 );
+//			customList.add( cb );
+//		}
+//		dbi.insertCustomByList( customList );
 		
 	}
 }
