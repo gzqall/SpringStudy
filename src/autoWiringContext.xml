@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+<!-- autoWiring 自动装备（不需要使用ref指定，自动根据类型、名字等进行注入）
+ 默认是关闭 可以指定装配类型
+ byName 通过 bean id 与 类的 属性名相同则自动装配
+ byType 通过bean的类型与属性的类型相同则 自动装配
+ constructor 通过bean类的构造方法进行装配，构造方法的参数 需要有一个单独bean的构造方法 public Customer( Person person )
+ autodetect Spring通过自动检测 进行自动装配 默认使用 参数匹配的构造函数进行装配，如果没有，则通过类型 匹配 装配 Spring 3以上 废弃
+ -->
+<!--  	<bean id="customer" class="cn.mars.gzqall.spring.autoWiring.Customer" autowire="byName"> -->
+<!--    <bean id="customer" class="cn.mars.gzqall.spring.autoWiring.Customer" autowire="byType">-->
+		<bean id="customer" class="cn.mars.gzqall.spring.autoWiring.Customer" autowire="constructor">
+		<property name="cust_id" value="10919291010"/>
+		<property name="cust_level" value="20"/>
+	</bean>
+	
+	
+	<!-- 
+	<bean id="persion" class="cn.mars.gzqall.spring.autoWiring.Person">
+		<property name="name" value="gaozqall"/>
+		<property name="age" value="18"/>
+		<property name="addr" value="BeiJing"/>
+		<property name="id_no" value="100101010101"/>
+	</bean> 
+	-->
+	<!-- 
+	<bean id="byType" class="cn.mars.gzqall.spring.autoWiring.Person">
+		<property name="name" value="gaozqall"/>
+		<property name="age" value="30"/>
+		<property name="addr" value="BeiJing"/>
+		<property name="id_no" value="100101010101"/>
+	</bean> 
+ -->
+	<bean id="persion" class="cn.mars.gzqall.spring.autoWiring.Person">
+		<property name="name" value="gaozqall"/>
+		<property name="age" value="30"/>
+		<property name="addr" value="BeiJing"/>
+		<property name="id_no" value="100101010101"/>
+	</bean> 
+</beans>
