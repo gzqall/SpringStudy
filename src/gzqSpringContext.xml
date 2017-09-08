@@ -6,10 +6,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
 <!-- BeanImplTest 有个GetBeanInter接口的实现的成员变量 使用 ref 去关联 已存在的bean -->
+<!-- ref 可以指定 本xml文件的bean local="" 也可 指定 全系统bean bean="" -->
 	<bean id="getBeanImpl" class="cn.mars.gzqall.spring.BeanImplTest">
-		<property name="gbi" ref="GzqallBean"/>
+
+<!-- 		<property name="gbi" ref="GzqallBean"/> -->
+		<property name="gbi" >
+	<!--  	<ref local="GzqallBean"/> -->
+	 	<ref bean="GzqallBean"/>
+		</property>
 	</bean>
 	
 	<bean id="GaozqaBean" class="cn.mars.gzqall.spring.interFaceColl.interFaceImpl.GaozqaBeanImpl"/>
-	<bean id="GzqallBean" class="cn.mars.gzqall.spring.interFaceColl.interFaceImpl.GzqallBeanImpl"/>
+<!-- <bean id="GzqallBean" class="cn.mars.gzqall.spring.interFaceColl.interFaceImpl.GzqallBeanImpl"/>	 移至autoWiringContext.xml-->
 </beans>

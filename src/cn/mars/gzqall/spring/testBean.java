@@ -12,7 +12,8 @@ public class TestBean {
 //		BaseBean bb = (BaseBean) ac.getBean( "baseBean" );
 //		bb.printValue();
 
-		ApplicationContext ac = new ClassPathXmlApplicationContext( new String[] {"gzqSpringContext.xml"});
+		ApplicationContext ac = new ClassPathXmlApplicationContext( new String[] {"gzqSpringContext.xml", "autoWiringContext.xml"});
+
 		
 		BeanImplTest bit = (BeanImplTest) ac.getBean( "getBeanImpl" );
 		bit.execBeanInger();

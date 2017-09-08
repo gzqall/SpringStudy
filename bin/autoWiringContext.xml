@@ -3,7 +3,16 @@
 	xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans.xsd 
+			http://www.springframework.org/schema/aop 
+			http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:context="http://www.springframework.org/schema/context"
+	>
 
 <!-- autoWiring 自动装备（不需要使用ref指定，自动根据类型、名字等进行注入）
  默认是关闭 可以指定装配类型
@@ -11,10 +20,20 @@
  byType 通过bean的类型与属性的类型相同则 自动装配
  constructor 通过bean类的构造方法进行装配，构造方法的参数 需要有一个单独bean的构造方法 public Customer( Person person )
  autodetect Spring通过自动检测 进行自动装配 默认使用 参数匹配的构造函数进行装配，如果没有，则通过类型 匹配 装配 Spring 3以上 废弃
- -->
+ 可以使用注解  在java类中 标记 构造方法、setter方法、成员变量 为自动装配 @Autowired
+ context xml 中需要包含 AutowiredAnnotationBeanPostProcessor 两种方法：<context:annotation-config /> (隐式的在Spring容器中注册了AutowiredAnnotationBeanPostProcessor
+CommonAnnotationBeanPostProcessor
+PersistenceAnnotationBeanPostProcessor
+RequiredAnnotationBeanPostProcessor 
+且 需要 声明 xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation  也需增加配置)
+ 或者 
+ <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+--> 
+		 <context:annotation-config/> 
 <!--  	<bean id="customer" class="cn.mars.gzqall.spring.autoWiring.Customer" autowire="byName"> -->
 <!--    <bean id="customer" class="cn.mars.gzqall.spring.autoWiring.Customer" autowire="byType">-->
-		<bean id="customer" class="cn.mars.gzqall.spring.autoWiring.Customer" autowire="constructor">
+<!--  	<bean id="customer" class="cn.mars.gzqall.spring.autoWiring.Customer" autowire="constructor">-->
+	<bean id="customer" class="cn.mars.gzqall.spring.autoWiring.Customer">
 		<property name="cust_id" value="10919291010"/>
 		<property name="cust_level" value="20"/>
 	</bean>
@@ -28,18 +47,18 @@
 		<property name="id_no" value="100101010101"/>
 	</bean> 
 	-->
-	<!-- 
+	
 	<bean id="byType" class="cn.mars.gzqall.spring.autoWiring.Person">
 		<property name="name" value="gaozqall"/>
-		<property name="age" value="30"/>
+		<property name="age" value="20"/>
 		<property name="addr" value="BeiJing"/>
 		<property name="id_no" value="100101010101"/>
 	</bean> 
- -->
 	<bean id="persion" class="cn.mars.gzqall.spring.autoWiring.Person">
 		<property name="name" value="gaozqall"/>
 		<property name="age" value="30"/>
 		<property name="addr" value="BeiJing"/>
 		<property name="id_no" value="100101010101"/>
 	</bean> 
+		<bean id="GzqallBean" class="cn.mars.gzqall.spring.interFaceColl.interFaceImpl.GzqallBeanImpl"/>	
 </beans>
