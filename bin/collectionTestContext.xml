@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	<bean id="collectionInit" class="cn.mars.gzqall.spring.collection.collectionTest">
+		<property name="list">
+			<list>
+				<value>ll</value>
+				<ref bean="byType"/>	
+				<bean id="ll" class="cn.mars.gzqall.spring.autoWiring.Person">
+					<property name="name" value="ll"/>
+					<property name="age" value="90"/>
+					<property name="addr" value="BJ"/>
+					<property name="id_no" value="01191919191"/>
+				</bean> 
+			</list>
+		</property>
+		<property name="set">
+			<set>
+				<value>ss</value>
+				<ref bean="byType"/>
+				<bean id="ss" class="cn.mars.gzqall.spring.autoWiring.Person">
+					<property name="name" value="ss"/>
+					<property name="age" value="91"/>
+					<property name="addr" value="BJ"/>
+					<property name="id_no" value="09999"/>
+				</bean> 
+			</set>		
+		</property>
+		<property name="map">
+			<map>
+				<entry key="11" value="mm"/>
+				<entry key="22" value-ref="byType"/>
+				<entry key="33">
+					<bean id="mm" class="cn.mars.gzqall.spring.autoWiring.Person">
+					<property name="name" value="mm"/>
+					<property name="age" value="93"/>
+					<property name="addr" value="BJ"/>
+					<property name="id_no" value="9911818"/>
+				</bean> 
+				</entry>
+			</map>
+		</property>
+		<property name="pros">
+			<props>
+				<prop key="name">xxxxxx</prop>
+				<prop key="age">300</prop>
+			</props>
+		</property>
+	</bean>	
+	<import resource="autoWiringContext.xml"/>
+</beans>

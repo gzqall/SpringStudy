@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	<!-- 不指定bean的作用域类型 默认为单例 
+	scope 选择 prototype 则为非单例 原型(prototype)
+	在原型作用域，必须为每个 getBean()方法中调用返回一个新的实例。-->
+	<bean id="scopeService" class="cn.mars.gzqall.spring.scope.scopeTest"/>
+	<bean id="scopeService1" class="cn.mars.gzqall.spring.scope.scopeTest" scope="prototype"/>
+</beans>
